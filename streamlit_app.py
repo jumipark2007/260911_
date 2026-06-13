@@ -264,7 +264,6 @@ if not st.session_state.game_started:
     st.markdown(f"""
     <div class="monster-container">
         {get_monster_svg_html()}
-        <p style="font-size: 1.5em; color: #FFC75F; font-weight: bold;">안녕! 난 배고픈 몬스터야 🍖</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -313,7 +312,7 @@ else:
         </div>
         """, unsafe_allow_html=True)
     with col3:
-        success_rate = int(st.session_state.score / max(st.session_state.question_count, 1) * 100) if st.session_state.question_count > 0 else 0
+        success_rate = int(st.session_state.score / (max(st.session_state.question_count, 1) * 10) * 100) if st.session_state.question_count > 0 else 0
         st.markdown(f"""
         <div class="score-card">
             🎯 성공률<br>
@@ -325,13 +324,11 @@ else:
     
     # 몬스터와 먹이 개수 표시
     st.markdown(f'<div class="monster-container">{get_monster_svg_html()}</div>', unsafe_allow_html=True)
-    st.markdown('<p style="text-align: center; font-size: 1.2em; color: #666; margin: 10px 0;">몬스터가 원하는 먹이</p>', unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         st.markdown(f"""
         <div style="background: linear-gradient(135deg, #FFB6D9, #FFE5B4); border-radius: 20px; padding: 30px; text-align: center; border: 4px solid #FF6B9D; box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);">
-            <p style="font-size: 1.5em; color: #666; margin: 0;">먹이 개수</p>
             <p style="font-size: 4em; font-weight: bold; color: #FF6B9D; margin: 0;">{st.session_state.monster_want}</p>
             <p style="font-size: 2em; margin: 0;">🍖</p>
         </div>
